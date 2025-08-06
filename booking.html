@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Now – La Flexible Spa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fdf8f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #fff2e6;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header img {
+      height: 50px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: brown;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 30px auto;
+      background-color: #fff7f0;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: brown;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: brown;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #8B4513;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      text-decoration: none;
+      color: brown;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="C:\Users\Buter\Desktop\spa logo.jpg" alt="La Flexible Spa Logo">
+    <h1>Welcome to La Flexible Spa</h1>
+  </header>
+
+  <div class="container">
+    <h2>Book Your Appointment</h2>
+    <form onsubmit="sendToWhatsApp(); return false;">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="date">Choose a Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="time">Choose a Time:</label>
+      <input type="time" id="time" required>
+
+      <label for="service">Select Service:</label>
+      <select id="service" required>
+        <option value="">-- Choose a Service --</option>
+        <option value="Massage">After Flight Massage</option>
+        <option value="Facial">Warm Oil Massage</option>
+        <option value="Body Scrub">Aroma Therapy Massage</option>
+        <option value="Manicure & Pedicure">Reflexology Foot Massage</option>
+        <option value="Manicure & Pedicure">Lomi Lomi Massage</option>
+        <option value="Manicure & Pedicure">Deep Tissue Massage</option>
+        <option value="Manicure & Pedicure">Hot Stone Massage</option>
+        <option value="Manicure & Pedicure">Spa Combo Massage + Foot Ritual / Warm Oil or Aloe Vera</option>
+        <option value="Manicure & Pedicure">Couple Treatment</option>
+      </select>
+
+      <button type="submit">Book Now via WhatsApp</button>
+    </form>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      var name = document.getElementById("name").value;
+      var date = document.getElementById("date").value;
+      var time = document.getElementById("time").value;
+      var service = document.getElementById("service").val ue;
+
+      var message = Hello La Flexible Spa 🌸\n\nI would like to book an appointment:\n\nName: ${name}\nService: ${service}\nDate: ${date}\nTime: ${time};
+      
+      var phoneNumber = "40744508783"; // Romanian number, no plus sign
+      var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank"); // This opens WhatsApp in a new tab
+    }
+  </script>
+
+</body>
+</html>
