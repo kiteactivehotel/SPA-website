@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Book Your Appointment – La Flexible SPA</title>
   <style>
-    /* Container styling */
+    /* your existing styles here */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
@@ -20,7 +20,6 @@
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-
     h2 {
       text-align: center;
       color: #8B4513;
@@ -28,14 +27,12 @@
       font-weight: 700;
       letter-spacing: 1.2px;
     }
-
     label {
       display: block;
       margin-bottom: 6px;
       font-weight: 600;
       color: #5C4033;
     }
-
     input[type="text"],
     input[type="date"],
     select,
@@ -49,7 +46,6 @@
       box-sizing: border-box;
       transition: border-color 0.3s ease;
     }
-
     input[type="text"]:focus,
     input[type="date"]:focus,
     select:focus {
@@ -57,8 +53,6 @@
       outline: none;
       background-color: #fffbe6;
     }
-
-    /* Time dropdown uses inline style */
     select.time-select {
       width: 100%;
       padding: 12px 14px;
@@ -74,7 +68,6 @@
       outline: none;
       background-color: #fffbe6;
     }
-
     button[type="submit"] {
       background-color: #a67c00;
       color: white;
@@ -96,10 +89,20 @@
   <div class="container">
     <h2>Book Your Appointment</h2>
 
-    <!-- Netlify form start -->
-    <form name="booking" method="POST" data-netlify="true" netlify>
-      <!-- Required hidden input for Netlify -->
+    <form 
+      name="booking" 
+      method="POST" 
+      data-netlify="true" 
+      netlify-honeypot="bot-field"
+      action="/thank-you.html"
+    >
+      <!-- Hidden inputs for Netlify -->
       <input type="hidden" name="form-name" value="booking" />
+      
+      <!-- Honeypot field (hidden from users) -->
+      <p style="display:none">
+        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+      </p>
 
       <label for="name">Full Name:</label>
       <input type="text" id="name" name="name" required />
@@ -153,7 +156,6 @@
 
       <button type="submit">Book Now</button>
     </form>
-    <!-- Netlify form end -->
 
   </div>
 
