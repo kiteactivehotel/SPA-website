@@ -1,127 +1,126 @@
-/* Basic Reset */
-* {
+/* Reset body margin and padding */
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body Styling */
-body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   background-color: #f9f9f9;
   color: #333;
-  padding: 20px;
 }
 
-/* Header */
+/* Header/navbar styles */
 header {
-  background-color: lab(22.87% 8.88 19.88 / 0.485); /* fresh green */
-  padding: 20px;
-  text-align: left;
-  color: white;
-  border-radius: 8px;
-  margin-bottom: 30px;
+  width: 100%;
+  background-color: #6b8e23;
 }
 
-/* Navigation Buttons */
-nav button {
-  background-color: #33691e; /* darker green */
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  margin: 0 8px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-nav button:hover {
-  background-color: #558b2f; /* lighter green on hover */
-}
-
-/* Sections */
-section {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-/* Section Headings */
-section h2 {
-  margin-bottom: 15px;
-  color: #33691e;
-}
-
-/* Book Now Button */
-section#booking button {
-  background-color: #c34a4a;
-  border: none;
-  padding: 15px 30px;
-  font-size: 1.1em;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-section#booking button:hover {
-  background-color: #6b9b28;
-}
-
-/* Banner Image Styling */
-section#home img {
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-/* Paragraph under banner */
-section#home p {
-  font-style: italic;
-  font-size: 1.2em;
-  color: #556b2f;
-}
-
-.booking-button {
-display: inline-block;
-padding: 12px 24px;
-background-color: #E1306C;
-color: white;
-text-decoration: none;
-border-radius: 6px;
-font-weight: bold;
-font-size: 16px;
-}
-.booking-button:hover {
-background-color: #C12C60;
-}
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: none;
+  max-width: 1200px;      /* keeps content nicely sized on big screens */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
 }
+
+/* Logo and text next to it */
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
+
 .logo img {
   height: 60px;
-  margin-right: 5px;
-}
-.logo span {
-  font-size: 20px;
-  font-weight: bold;
+  width: 60px;
+  border-radius: 50%; /* makes the logo round */
+  object-fit: cover;
+  margin-right: 15px;
+  border: 2px solid white; /* optional white border for style */
 }
 
-.nav-links a {
-    margin-left: 15px;
-    padding-left: 8px 16px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
+/* Text next to logo */
+.logo span {
+  font-size: 20px;
+  font-weight: 600;
+  user-select: none;
 }
+
+/* Navigation links */
+.nav-links a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
 .nav-links a:hover {
-color: #E1306C;
+  color: #ff6347; /* tomato red on hover */
+}
+
+/* Remove margin below header */
+header {
+  margin-bottom: 0;
+}
+
+/* Banner image and home section */
+section#home img {
+  display: block;         /* remove bottom whitespace */
+  width: 100vw;           /* full viewport width */
+  max-height: 600px;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove spacing above home section */
+section#home {
+  margin-top: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #fff; /* optional background for contrast */
+}
+
+/* Banner tagline */
+section#home p {
+  font-style: italic;
+  font-size: 24px;
+  color: #556b2f;
+  margin: 10px 0 30px 0;
+}
+
+/* Other sections styling */
+section#about,
+section#contact {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  padding: 30px 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  color: #444;
+}
+
+section#about h2,
+section#contact h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #6b8e23;
+}
+
+section#about p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Layout for about us left, contact center and contact below about */
+section#about {
+  text-align: left;
+}
+
+section#contact {
+  text-align: center;
+  margin-top: 20px;
 }
