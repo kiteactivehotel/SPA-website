@@ -1,178 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Book Now – La Flexible Spa</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Your Appointment – La Flexible SPA</title>
   <style>
+    /* Container styling */
     body {
-      font-family: sans-serif;
-      background-color: #fdf8f2;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #fff2e6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
       padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid #ddd;
-    }
-
-    header img {
-      height: 50px;
-      margin-right: 15px;
-    }
-
-    header h1 {
-      font-size: 24px;
-      color: brown;
       margin: 0;
     }
-
     .container {
-      max-width: 500px;
-      margin: 30px auto;
-      background-color: #fff7f0;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 480px;
+      margin: 20px auto;
+      background: #fff7f0;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     h2 {
       text-align: center;
-      color: brown;
-      margin-bottom: 20px;
+      color: #8B4513;
+      margin-bottom: 25px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
     }
 
     label {
       display: block;
-      margin-top: 10px;
-      font-weight: bold;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #5C4033;
     }
 
-    input, select {
+    input[type="text"],
+    input[type="date"],
+    select,
+    button[type="submit"] {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      padding: 12px 14px;
+      border: 2px solid #d6cfc2;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
     }
 
-    button {
+    input[type="text"]:focus,
+    input[type="date"]:focus,
+    select:focus {
+      border-color: #a67c00;
+      outline: none;
+      background-color: #fffbe6;
+    }
+
+    /* Time dropdown uses inline style */
+    select.time-select {
       width: 100%;
-      padding: 12px;
-      background-color: brown;
+      padding: 12px 14px;
+      border: 2px solid #d6cfc2;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+    select.time-select:focus {
+      border-color: #a67c00;
+      outline: none;
+      background-color: #fffbe6;
+    }
+
+    button[type="submit"] {
+      background-color: #a67c00;
       color: white;
       border: none;
-      border-radius: 5px;
-      font-size: 16px;
+      padding: 14px 0;
+      font-size: 18px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
     }
-
-    button:hover {
-      background-color: #8B4513;
-    }
-
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      text-decoration: none;
-      color: brown;
-    }
-
-    .back-link:hover {
-      text-decoration: underline;
+    button[type="submit"]:hover {
+      background-color: #875f00;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="logo.jpg" alt="La Flexible SPA Logo">
-    <h1>Welcome to La Flexible Spa</h1>
-  </header>
-
   <div class="container">
     <h2>Book Your Appointment</h2>
-    <form onsubmit="sendToWhatsApp(); return false;">
+
+    <form action="submit_booking.php" method="post">
       <label for="name">Full Name:</label>
-      <input type="text" id="name" required>
+      <input type="text" id="name" name="name" required />
 
-      <label for="date">Choose a Date:</label>
-      <input type="date" id="date" required>
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" name="phone" placeholder="+255 7XXXXXXXX" required />
 
-      <label for="time">Preferred Time:</label><br>
-  <select name="hour" id="hour">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-  </select>
-
-  <select name="minute" id="minute">
-    <option value="00">00</option>
-    <option value="15">15</option>
-    <option value="30">30</option>
-    <option value="45">45</option>
-  </select>
-
-  <select name="ampm" id="ampm">
-    <option value="AM">AM</option>
-    <option value="PM">PM</option>
-  </select><br><br>
-      <input type="time" id="time" required>
-
-      <label for="service">Select Service:</label>
-      <select id="service" required>
-        <option value="">-- Choose a Service --</option>
-        <option value="Massage">After Flight Massage</option>
-        <option value="Facial">Warm Oil Massage</option>
-        <option value="Body Scrub">Aroma Therapy Massage</option>
-        <option value="Manicure & Pedicure">Reflexology Foot Massage</option>
-        <option value="Manicure & Pedicure">Lomi Lomi Massage</option>
-        <option value="Manicure & Pedicure">Deep Tissue Massage</option>
-        <option value="Manicure & Pedicure">Hot Stone Massage</option>
-        <option value="Manicure & Pedicure">Spa Combo Massage + Foot Ritual / Warm Oil or Aloe Vera</option>
-        <option value="Manicure & Pedicure">Couple Treatment</option>
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">-- Select Gender --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
       </select>
 
-      <button type="submit">Book Now via WhatsApp</button>
+      <label for="date">Choose a Date:</label>
+      <input type="date" id="date" name="date" required />
+
+      <label for="time">Choose a Time:</label>
+      <select id="time" name="time" class="time-select" required>
+        <option value="">-- Select Time --</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="2:00 PM">2:00 PM</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="4:00 PM">4:00 PM</option>
+        <option value="5:00 PM">5:00 PM</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="7:00 PM">7:00 PM</option>
+        <option value="8:00 PM">8:00 PM</option>
+        <option value="9:00 PM">9:00 PM</option>
+        <option value="10:00 PM">10:00 PM</option>
+        <option value="11:00 PM">11:00 PM</option>
+      </select>
+
+      <label for="service">Select Service:</label>
+      <select id="service" name="service" required>
+        <option value="">-- Choose a Service --</option>
+        <option value="After Flight Massage">After Flight Massage</option>
+        <option value="Warm Oil Massage">Warm Oil Massage</option>
+        <option value="Aroma Therapy Massage">Aroma Therapy Massage</option>
+        <option value="Reflexology Foot Massage">Reflexology Foot Massage</option>
+        <option value="Lomi Lomi Massage">Lomi Lomi Massage</option>
+        <option value="Deep Tissue Massage">Deep Tissue Massage</option>
+        <option value="Hot Stone Massage">Hot Stone Massage</option>
+        <option value="Spa Combo Massage + Foot Ritual">Spa Combo Massage + Foot Ritual</option>
+        <option value="Couple Treatment">Couple Treatment</option>
+      </select>
+
+      <button type="submit">Book Now</button>
     </form>
-
-    <a href="index.html" class="back-link">← Back to Home</a>
   </div>
-
-  <script>
-    function sendToWhatsApp() {
-      var name = document.getElementById("name").value;
-      var date = document.getElementById("date").value;
-      var time = document.getElementById("time").value;
-      var service = document.getElementById("service").val ue;
-
-      var message = Hello La Flexible Spa 🌸\n\nI would like to book an appointment:\n\nName: ${name}\nService: ${service}\nDate: ${date}\nTime: ${time};
-      
-      var phoneNumber = "40744508783"; // Romanian number, no plus sign
-      var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
-
-      window.open(url, "_blank"); // This opens WhatsApp in a new tab
-    }
-  </script>
 
 </body>
 </html>
-
-
-
